@@ -50,7 +50,7 @@ import net.sourceforge.vietocr.ImageIOHelper;
 public class Tesseract implements ITesseract {
 
     private static Tesseract instance;
-    private String language = "eng";
+    public static String language = "eng";
     private String datapath = "./";
     private int psm = TessPageSegMode.PSM_AUTO;
     private boolean hocr;
@@ -79,6 +79,7 @@ public class Tesseract implements ITesseract {
     public static synchronized Tesseract getInstance() {
         if (instance == null) {
             instance = new Tesseract();
+            instance.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata"); //linux
         }
 
         return instance;
