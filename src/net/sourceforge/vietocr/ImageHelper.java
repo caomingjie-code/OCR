@@ -132,6 +132,14 @@ public class ImageHelper {
         return tmp;
     }
 
+    public static BufferedImage convertImageToGrayscale(BufferedImage image, int i ) {
+        BufferedImage tmp = new BufferedImage(image.getWidth(), image.getHeight(), i );
+        Graphics2D g2 = tmp.createGraphics();
+        g2.drawImage(image, 0, 0, null);
+        g2.dispose();
+        return tmp;
+    }
+
     private static final short[] invertTable;
 
     static {
