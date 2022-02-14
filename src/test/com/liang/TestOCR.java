@@ -35,15 +35,15 @@ public class TestOCR {
 
         // 图片锐化,自己使用中影响识别率的主要因素是针式打印机字迹不连贯,所以锐化反而降低识别率
 
-        processImg(bi,25);
+        processImg(bi,12);
 
-
-        //bi = ImageHelper.convertImageToBinary(bi);// 这行代码放开识别率更低,
+        // 图片放大5倍,增强识别率(很多图片本身无法识别,放大15倍时就可以轻易识,但是考滤到客户电脑配置低,针式打印机打印不连贯的问题,这里就放大5倍)
+        //bi = ImageHelper.getScaledInstance(bi, bi.getWidth() * m, bi.getHeight() * n);
 
         boolean write = ImageIO.write(bi, "png", new File("/home/cmj/nohup/pdf" + System.nanoTime()));
         System.out.println(write + "-----------------");
-        // 图片放大5倍,增强识别率(很多图片本身无法识别,放大15倍时就可以轻易识,但是考滤到客户电脑配置低,针式打印机打印不连贯的问题,这里就放大5倍)
-        bi = ImageHelper.getScaledInstance(bi, bi.getWidth() * m, bi.getHeight() * n);
+
+
         Tesseract instance = Tesseract.getInstance();
 //		File imageFile = new File("F:\\testEnglishBig.png");
 //		BufferedImage bi = ImageIO.read(imageFile);

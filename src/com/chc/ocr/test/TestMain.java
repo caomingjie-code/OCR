@@ -46,7 +46,7 @@ public class TestMain {
 //      String userdir = System.getProperty("user.dir");
 //      File tempFile = new File("d:", "temp.png");
 
-            File storeFile = new File("/home/cmj/桌面/a1.png");
+            File storeFile = new File("/home/cmj/桌面/pdf2.png");
             Tesseract.language = "chi_sim";
             BufferedImage tempImg = ImageIO.read(storeFile);
             String character = TestOCR.recognizeCharacter(tempImg,16,15);
