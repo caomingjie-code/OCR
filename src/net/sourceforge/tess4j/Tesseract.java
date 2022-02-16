@@ -26,6 +26,7 @@ import java.util.*;
 import java.util.logging.*;
 import javax.imageio.IIOImage;
 
+import net.sourceforge.TesseractOS;
 import net.sourceforge.tess4j.ITessAPI.TessOcrEngineMode;
 import net.sourceforge.tess4j.ITessAPI.TessPageSegMode;
 
@@ -58,7 +59,7 @@ public class Tesseract implements ITesseract {
     private int ocrEngineMode = TessOcrEngineMode.OEM_DEFAULT;
     private final Properties prop = new Properties();
     private final List<String> configList = new ArrayList<String>();
-
+    public static TesseractOS tesseractOS = TesseractOS.UBUNTU;
     private TessAPI api;
     private TessAPI.TessBaseAPI handle;
 
@@ -79,9 +80,10 @@ public class Tesseract implements ITesseract {
     public static synchronized Tesseract getInstance() {
         if (instance == null) {
             instance = new Tesseract();
-            instance.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata"); //linux
+            if(tesseractOS != null){
+                instance.setDatapath(tesseractOS.getPath());
+            }
         }
-
         return instance;
     }
 

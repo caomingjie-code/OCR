@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import net.sourceforge.TesseractOS;
 import net.sourceforge.tess4j.Tesseract;
 import test.com.liang.TestOCR;
 
@@ -45,10 +46,11 @@ public class TestMain {
       public static void main(String[] args) throws Exception {
 //      String userdir = System.getProperty("user.dir");
 //      File tempFile = new File("d:", "temp.png");
-
-            File storeFile = new File("/home/cmj/桌面/pdf2.png");
-            Tesseract.language = "chi_sim";
+            Tesseract.language = "t1";
+            Tesseract.tesseractOS = TesseractOS.WIN;
+            File storeFile = new File("C:\\Users\\cmj\\IdeaProjects\\mh-doc\\note-doc\\doc\\框架笔记\\tesseract\\img\\pdf2875809419433.png");
             BufferedImage tempImg = ImageIO.read(storeFile);
+//            TestOCR.wirtePath = "/home/cmj/nohup/pdf";
             String character = TestOCR.recognizeCharacter(tempImg,16,15);
             System.out.println(character );
 

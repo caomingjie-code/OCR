@@ -15,6 +15,7 @@ import org.junit.Test;
 
 public class TestOCR {
 
+    public static String wirtePath = null;
 
     public static String recognizeCharacter(BufferedImage bufferedImage, int m) throws IOException, TesseractException {
         // 这里对图片黑白处理,增强识别率.这里先通过截图,截取图片中需要识别的部分
@@ -39,11 +40,10 @@ public class TestOCR {
 
         // 图片放大5倍,增强识别率(很多图片本身无法识别,放大15倍时就可以轻易识,但是考滤到客户电脑配置低,针式打印机打印不连贯的问题,这里就放大5倍)
         //bi = ImageHelper.getScaledInstance(bi, bi.getWidth() * m, bi.getHeight() * n);
-
-        boolean write = ImageIO.write(bi, "png", new File("/home/cmj/nohup/pdf" + System.nanoTime()));
-        System.out.println(write + "-----------------");
-
-
+        if(wirtePath != null){
+            boolean write = ImageIO.write(bi, "png", new File( wirtePath + System.nanoTime()));
+            System.out.println(write + "-----------------");
+        }
         Tesseract instance = Tesseract.getInstance();
 //		File imageFile = new File("F:\\testEnglishBig.png");
 //		BufferedImage bi = ImageIO.read(imageFile);
