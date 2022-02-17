@@ -12,7 +12,7 @@ public class Tess4jOCRSample {
     public static void main(String[] args) throws Exception {
 //      String userdir = System.getProperty("user.dir");
 //      File tempFile = new File("d:", "temp.png");
-        TesseractOCR.language = "t1+chi_sim";
+        TesseractOCR.language = "t1+merge1";
         TesseractOCR.tesseractOS = TesseractOS.WIN;
         File storeFile = new File("C:\\Users\\cmj\\IdeaProjects\\mh-doc\\note-doc\\doc\\框架笔记\\tesseract\\img\\pdf2875809419433.png");
         //storeFile = new File("/home/cmj/桌面/mst/aa/1645028560694.png");
