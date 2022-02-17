@@ -49,7 +49,7 @@ public class TestMain {
             Tesseract.language = "chi_sim";
             Tesseract.tesseractOS = TesseractOS.UBUNTU;
             File storeFile = new File("C:\\Users\\cmj\\IdeaProjects\\mh-doc\\note-doc\\doc\\框架笔记\\tesseract\\img\\pdf2875809419433.png");
-            storeFile = new File("/home/cmj/桌面/面试题/aa/1645028560694.png");
+            storeFile = new File("/home/cmj/桌面/mst/aa/1645028560694.png");
             BufferedImage tempImg = ImageIO.read(storeFile);
 //            TestOCR.wirtePath = "/home/cmj/nohup/pdf";
             String character = TestOCR.recognizeCharacter(tempImg,16,15);
