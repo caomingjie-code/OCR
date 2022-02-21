@@ -2,6 +2,7 @@ package com.javaoffers.tess4f.ocr.sample;
 
 import com.javaoffers.tess4f.ocr.utils.HttpClientUtils;
 import com.javaoffers.tess4f.ocr.utils.MapUtils;
+import com.javaoffers.tess4j.ocr.os.TesseractOS;
 import com.javaoffers.tess4j.ocr.tess4j.TesseractOCR;
 import com.javaoffers.tess4j.ocr.utils.OCRUtils;
 import org.junit.Test;
@@ -30,7 +31,10 @@ public class PdfImage2JosSample {
 
     public static  void test1( int i) throws  Exception{
         TesseractOCR.language = "chi_sim";
-        File file = new File("/home/cmj/桌面/面试题/aa");
+        TesseractOCR.tesseractOS = TesseractOS.WIN;
+        File file = null;
+        //file = new File("/home/cmj/桌面/面试题/aa");
+        file = new File("C:\\Users\\cmj\\Desktop\\新建文件夹\\aa\\img");
         File[] list = file.listFiles();
         Arrays.sort(list);
         int count = 1;
@@ -50,8 +54,8 @@ public class PdfImage2JosSample {
                     .endBuildParam();
 
 
-            String s = HttpClientUtils.postData(url, param);
-            System.out.println(s);
+//            String s = HttpClientUtils.postData(url, param);
+//            System.out.println(s);
 
         }
 
