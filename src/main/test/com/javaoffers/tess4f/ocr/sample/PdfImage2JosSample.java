@@ -37,7 +37,7 @@ public class PdfImage2JosSample {
         for(File fi : list){
             BufferedImage tempImg = ImageIO.read(fi);
             String character = OCRUtils.recognizeCharacterBrighten(tempImg,16);
-            String commot = processStr(character);
+            String commot = processStr(character).trim();
             System.out.println(commot);
             if(i == count){
                 break;
@@ -50,8 +50,9 @@ public class PdfImage2JosSample {
                     .endBuildParam();
 
 
-            String s = HttpClientUtils.postData(url, param);
-            System.out.println(s);
+            String s = HttpClientUtils.postParamData(url, param);
+            System.out.println(s+"----------------------------------------------------------------");
+            //return;
 
         }
 
