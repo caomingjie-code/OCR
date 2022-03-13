@@ -11,7 +11,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 
 /**
  * @author cmj
@@ -31,21 +34,31 @@ public class PdfImage2JosSample {
 
     public static  void test1( int i) throws  Exception{
         TesseractOCR.language = "chi_sim";
-        TesseractOCR.tesseractOS = TesseractOS.WIN;
+        //TesseractOCR.tesseractOS = TesseractOS.WIN;
         File file = null;
-        //file = new File("/home/cmj/桌面/面试题/aa");
-        file = new File("C:\\Users\\cmj\\Desktop\\新建文件夹\\aa\\img");
+        file = new File("/home/cmj/桌面/面试题/aa");
+        //file = new File("C:\\Users\\cmj\\Desktop\\新建文件夹\\aa\\img");
         File[] list = file.listFiles();
-        Arrays.sort(list);
+
+        //按照名称后面的数字排序
+        TreeMap<Long, File> sort = new TreeMap<>();
+        Stream.of(list).forEach(m->{
+            long l = Long.parseLong(m.getName().split("___")[1].split("\\.")[0]);
+            sort.put(l,m);
+        });
+
+        Collection<File> values = sort.values();
+
         int count = 1;
-        for(File fi : list){
+        for(File fi : values){
             BufferedImage tempImg = ImageIO.read(fi);
             String character = OCRUtils.recognizeCharacterBrighten(tempImg,16);
             String commot = processStr(character).trim();
             System.out.println(commot);
-            if(i == count){
-                break;
-            }
+//            if(i == count){
+//                break;
+//            }
+//            return;
             String url = "http://localhost:8090/offer2";
             Map<String, Object> param = MapUtils.startBuildParam("type", "mybatis")
                     .buildParam("questionStem", "ocr")
